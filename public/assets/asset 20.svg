@@ -1,0 +1,25 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<foreignObject x="-40" y="-40" width="128" height="128"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_105_612_clip_path);height:100%;width:100%"></div></foreignObject><circle data-figma-bg-blur-radius="40" cx="24" cy="24" r="23.5714" fill="white" stroke="white" stroke-width="0.857143"/>
+<g clip-path="url(#clip1_105_612)">
+<path d="M20.6779 21.0707L21.9031 17.2802C22.1168 16.619 22.9136 16.3546 23.4261 16.7876C29.1494 21.6215 30.532 26.1263 25.4515 32.1594C27.7688 27.0016 23.0533 22.8933 20.6779 21.0707Z" fill="#FF6500"/>
+<g filter="url(#filter1_d_105_612)">
+<path d="M23.2847 14.3633L24.3957 10.632C24.5967 9.9567 25.4052 9.67648 25.9403 10.0973C31.9475 14.8223 35.865 18.4822 29.6464 26.5865C31.9637 21.4286 25.6601 16.1861 23.2847 14.3633Z" fill="#FF6500"/>
+</g>
+<path d="M17.9832 27.9824L19.2914 23.9241C19.5036 23.266 20.2942 22.9988 20.8016 23.4329C25.4473 27.4077 26.2474 31.3812 21.226 37.3444C23.5433 32.1866 20.3758 29.8182 17.9832 27.9824Z" fill="#FF6500"/>
+</g>
+<defs>
+<clipPath id="bgblur_0_105_612_clip_path" transform="translate(40 40)"><circle cx="24" cy="24" r="23.5714"/>
+</clipPath><filter id="filter1_d_105_612" x="23.2852" y="9.89868" width="9.51172" height="17.5449" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="0.857143"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.06 0"/>
+<feBlend mode="plus-darker" in2="BackgroundImageFix" result="effect1_dropShadow_105_612"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_105_612" result="shape"/>
+</filter>
+<clipPath id="clip1_105_612">
+<rect width="16.2303" height="25.7143" fill="white" transform="translate(25.0615 8.59741) rotate(37.5)"/>
+</clipPath>
+</defs>
+</svg>
