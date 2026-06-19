@@ -36,7 +36,7 @@ export default function Navbar() {
           {/* Logo */}
           <a href="/" className="flex items-center shrink-0">
             <Image
-              src="/assets/asset 0.svg"
+              src="/assets/etrack.svg"
               alt="eTrack"
               width={125}
               height={32}

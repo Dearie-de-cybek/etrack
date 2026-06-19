@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Sparkles, ArrowUp, ArrowDown, ArrowRight } from "lucide-react";
 
 const faqs = [
   {
@@ -19,43 +19,38 @@ const faqs = [
   },
   {
     q: "Is the Starter plan really free forever?",
-    a: "Yes — no credit card required. The Starter plan gives you a fully functional POS with up to 200 transactions per month. Upgrade to Growth whenever you need unlimited transactions and mobile POS.",
+    a: "Yes — no credit card required. The Starter plan gives you a fully functional POS with up to 200 transactions per month. Upgrade whenever you need more.",
   },
   {
     q: "Can I import my existing products and data?",
     a: "Yes. eTrack supports CSV and Excel imports for your product catalog, customer list, and historical data. Our onboarding team helps with bulk migration at no extra cost.",
   },
-  {
-    q: "Is eTrack suitable for cooperatives?",
-    a: "eTrack was built with cooperatives in mind. The Enterprise plan includes multi-member account management, group purchase tracking, contribution recording, and detailed member statements.",
-  },
 ];
 
-function Item({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
+function Item({ q, a, defaultOpen = false }: { q: string; a: string; defaultOpen?: boolean }) {
+  const [open, setOpen] = useState(defaultOpen);
+
   return (
-    <div className="border-b border-[#F0F0F0]">
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex items-center justify-between w-full py-5 text-left gap-4 group"
-      >
-        <span
-          className="text-base font-medium transition-colors group-hover:text-[#0c0c0c]"
-          style={{ color: open ? "#0c0c0c" : "#333333", fontFamily: "var(--font-sans)" }}
-        >
+    <div
+      className="rounded-2xl px-6 py-5 cursor-pointer select-none"
+      style={{ background: "#F5F5F5" }}
+      onClick={() => setOpen(!open)}
+    >
+      <div className="flex items-center justify-between gap-4">
+        <span style={{ fontSize: 15, fontWeight: 600, color: "#0c0c0c", lineHeight: "22px" }}>
           {q}
         </span>
+
         <span
-          className="shrink-0 w-7 h-7 rounded-full border flex items-center justify-center transition-all"
-          style={{
-            background: open ? "rgba(255,101,0,0.08)" : "#F8F8F8",
-            borderColor: open ? "rgba(255,101,0,0.2)" : "#E8E8E8",
-            color: open ? "#FF6500" : "#AAAAAA",
-          }}
+          className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-colors duration-200"
+          style={{ background: open ? "#FF6500" : "#E4E4E4" }}
         >
-          {open ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
+          {open
+            ? <ArrowUp style={{ width: 16, height: 16, color: "#ffffff" }} />
+            : <ArrowDown style={{ width: 16, height: 16, color: "#666666" }} />
+          }
         </span>
-      </button>
+      </div>
 
       <AnimatePresence initial={false}>
         {open && (
@@ -66,7 +61,9 @@ function Item({ q, a }: { q: string; a: string }) {
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="body-text text-sm pb-5 max-w-2xl">{a}</p>
+            <p style={{ fontSize: 14, color: "#666666", lineHeight: "22px", paddingTop: 14 }}>
+              {a}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -77,39 +74,68 @@ function Item({ q, a }: { q: string; a: string }) {
 export default function FAQ() {
   return (
     <section id="faq" className="py-28 bg-white">
-      <div className="max-w-3xl mx-auto px-5">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-12"
-        >
-          <h2
-            style={{ fontSize: 44, fontWeight: 500, lineHeight: "52px", color: "#0c0c0c", fontFamily: "var(--font-sans)" }}
-            className="mb-4"
-          >
-            Frequently asked questions
-          </h2>
-          <p className="body-text">Everything you need to know before getting started.</p>
-        </motion.div>
+      <div className="max-w-7xl mx-auto px-5">
+        <div className="flex gap-20 items-start">
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.15 }}
-          className="rounded-2xl border border-[#E8E8E8] bg-white px-6"
-        >
-          {faqs.map((faq) => <Item key={faq.q} q={faq.q} a={faq.a} />)}
-        </motion.div>
+          {/* ── Left: heading + CTA ── */}
+          <div style={{ flex: "0 0 32%" }}>
+            {/* Tag */}
+            <div
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6"
+              style={{
+                background: "rgba(255,101,0,0.07)",
+                border: "1px solid rgba(255,101,0,0.18)",
+              }}
+            >
+              <Sparkles style={{ width: 13, height: 13, color: "#FF6500" }} />
+              <span style={{ fontSize: 12, fontWeight: 700, color: "#FF6500", letterSpacing: "0.1em" }}>
+                FAQ
+              </span>
+            </div>
 
-        <p className="text-center text-sm text-[#AAAAAA] mt-8">
-          Still have questions?{" "}
-          <a href="mailto:hello@etrack.app" className="text-[#FF6500] hover:underline">
-            Chat with our team →
-          </a>
-        </p>
+            <h2
+              style={{
+                fontSize: 44,
+                fontWeight: 700,
+                lineHeight: "52px",
+                color: "#0c0c0c",
+                marginBottom: 16,
+              }}
+            >
+              Frequently Asked
+              <br />
+              <span style={{ color: "#FF6500" }}>Questions</span>
+            </h2>
+
+            <p style={{ fontSize: 15, color: "#888888", lineHeight: "24px", marginBottom: 40 }}>
+              Everything you need to know about eTrack's features, pricing, and
+              support — before you get started.
+            </p>
+
+            {/* Contact Us pill button */}
+            <a
+              href="mailto:hello@etrack.app"
+              className="inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full transition-opacity hover:opacity-90"
+              style={{ background: "#FF6500" }}
+            >
+              <span style={{ color: "#ffffff", fontWeight: 600, fontSize: 14 }}>Contact Us</span>
+              <span
+                className="w-9 h-9 rounded-full bg-white flex items-center justify-center shrink-0"
+                style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}
+              >
+                <ArrowRight style={{ width: 16, height: 16, color: "#FF6500" }} />
+              </span>
+            </a>
+          </div>
+
+          {/* ── Right: accordion cards ── */}
+          <div style={{ flex: 1 }} className="flex flex-col gap-3">
+            {faqs.map((faq, i) => (
+              <Item key={faq.q} q={faq.q} a={faq.a} defaultOpen={i === 0} />
+            ))}
+          </div>
+
+        </div>
       </div>
     </section>
   );
